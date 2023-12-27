@@ -5,7 +5,7 @@ log = logging.getLogger(f"etf4u.{__name__}")
 
 # The ARK adapter fetches the .csv file of the funds' holdings published on their site
 
-FUNDS = ["arkk", "arkw", "arkq", "arkf", "arkg"]
+FUNDS = ["arkk", "arkw", "arkq", "arkf", "arkg", "arkx","prnt","izrl"]
 
 
 def get_fund_file(fund):
@@ -14,7 +14,10 @@ def get_fund_file(fund):
         "arkw": "ARK_INNOVATION_ETF_ARKW_HOLDINGS",
         "arkq": "ARK_INNOVATION_ETF_ARKQ_HOLDINGS",
         "arkf": "ARK_INNOVATION_ETF_ARKF_HOLDINGS",
-        "arkg": "ARK_INNOVATION_ETF_ARKG_HOLDINGS"
+        "arkg": "ARK_INNOVATION_ETF_ARKG_HOLDINGS",
+        "arkx": "ARK_INNOVATION_ETF_ARKF_HOLDINGS",
+        "prnt": "THE_3D_PRINTING_ETF_PRNT_HOLDINGS",
+        "izrl": "ARK_ISRAEL_INNOVATIVE__TECHNOLOGY_ETF_IZRL_HOLDINGS"
     }
     return (
         "https://ark-funds.com/wp-content/uploads/funds-etf-csv/"
