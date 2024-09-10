@@ -1,7 +1,13 @@
-import urllib.request, logging, json, time
+import urllib.request, logging, json, time, sys
 from lxml import html
 from utils import HEADERS
+from loguru import logger
 
+logger.remove()
+logger.add(
+    sys.stderr,
+    format="<d>{time:YYYY-MM-DD ddd HH:mm:ss}</d> | <lvl>{level}</lvl> | <lvl>{message}</lvl>",
+)
 log = logging.getLogger(f"etf4u.{__name__}")
 
 # The etfdb adapter is a fallback adapter used when no specific adapter exists for a fund
@@ -30,6 +36,7 @@ def fetch(fund):
     ]:
         log.debug(f"fetching query {query}")
         holdings_url = f"https://etfdb.com/{table.get('data-url')}{query}"
+        logger.debug(f"fetching URL {holdings_url}")
         holdings_req = urllib.request.Request(holdings_url, headers=HEADERS)
         holdings_res = urllib.request.urlopen(holdings_req)
         holdings = json.loads(holdings_res.read().decode("utf-8"))
