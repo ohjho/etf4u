@@ -36,7 +36,7 @@ def fetch(fund):
     ]:
         log.debug(f"fetching query {query}")
         holdings_url = f"https://etfdb.com/{table.get('data-url')}{query}"
-        logger.debug(f"fetching URL {holdings_url}")
+        logger.info(f"fetching URL {holdings_url}")
         holdings_req = urllib.request.Request(holdings_url, headers=HEADERS)
         holdings_res = urllib.request.urlopen(holdings_req)
         holdings = json.loads(holdings_res.read().decode("utf-8"))
